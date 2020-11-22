@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 	<script type="text/javascript" src="script/countryes.json"></script>
+	<script type="text/javascript" src="script/postal_codes.json"></script>
 </head>
 <body>
 	<div class="form_container">
@@ -28,11 +29,14 @@
 				<p>
 					<select name="country" id="country" class="field">
 						<option value="">Choose your country</option>						
-					</select>
+					</select>					
 				</p>
 				<p><input type="text" placeholder="City" class="field"></p>				
 				<p><input type="text" placeholder="Adress" class="field"></p>
-				<p><input type="text" placeholder="Postal code" class="field"></p>				
+				<p>
+					<input type="text" placeholder="Postal code" class="field">
+					<span class="pattern_error"></span>
+				</p>				
 
 				<p class="checkbox_container">
 					<input type="checkbox" id="shipping_checkbox" name="shipping_checkbox">	
@@ -42,11 +46,14 @@
 				<p>
 					<select name="shipping_country" id="sh_country" class="field">
 						<option value="">Choose shipping country</option>
-					</select>
+					</select>					
 				</p>
 				<p><input type="text" placeholder="Shipping city" class="field" id="sh_city"></p>
 				<p><input type="text" placeholder="Shipping adress" class="field" id="sh_adress"></p>
-				<p><input type="text" placeholder="Shipping Postal code" class="field" id="sh_postal_code"></p>
+				<p>
+					<input type="text" placeholder="Shipping Postal code" class="field" id="sh_postal_code">
+					<span class="pattern_error"></span>
+				</p>
 
 				<div class="buttons_container">
 					<div class="next_button">
@@ -128,6 +135,17 @@
 				    </div>
 				</div>
 			</form>		
+		</div>
+
+		<div class="congratulations_block">
+			<div>
+				<strong>Congratulations</strong>
+			    <i class="fa fa-check-circle"></i>
+			</div>
+			<h3>Your request sended</h3>
+			<div class="reload_button" onclick="location.reload()">
+				<span>Start Again</span>
+			</div>
 		</div>
 	</div>
 

@@ -1,4 +1,5 @@
 $main_blue: #19b9e7
+$main_green: #2E8B57
 $flexable_width: 80%
 
 
@@ -7,15 +8,19 @@ html, body, *
 
 body
   font: 100%
-  background-color: #fff
-  color: grey
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(130,205,221,1) 0%, rgba(255,247,153,1) 90% )
+  color: $main_blue
 
 
 .form_container 
-  width: 40%
+  width: 800px
   margin: 50px auto
   border: 10px solid $main_blue
 
+
+@media screen and (max-width: 800px) 
+  .form_container
+    width: 100%
 
 .header
     div
@@ -39,37 +44,40 @@ form
     width: 100%
     height: 50px
     padding-left: 25px
-    color: green
-    border: 2px solid green   
-    font-size: 1.5rem
+    color: $main_green
+    border: 2px solid $main_green   
+    font-size: 2rem
   
   input:focus, select:focus
     outline: none
+
+  input:disabled, select:disabled
+    color: grey
 
   .invalideInput
     border: 2px solid red
 
   .valideInput
-    border: 2px solid green
+    border: 2px solid $main_green
 
   select
-    color: grey
+    // color: grey
     option
-      color: green
+      color: $main_green
 
 @media screen and (max-width: 850px) 
   form
     input, select
-      font-size: 1.2rem
+      font-size: 1.5rem
 
 
 @media screen and (max-width: 650px) 
   form
     input, select
-      font-size: 1rem
+      font-size: 1.2rem
 
 .step
-  display: block
+  display: none
   .header
       background-color: #fff
       display: flex
@@ -79,7 +87,7 @@ form
       img
         width: 150px
 
-.step:nth-child(3)
+.step:nth-child(1)
   display: block
 
 @media screen and (max-width: 950px) 
@@ -94,16 +102,20 @@ form
       img
         width: 50px
 
+.pattern_error
+  color: red
+
 .checkbox_container
   display: flex
   align-items: center
 
   input
-    width: 20px
-    height: 20px
+    width: 50px
+    height: 50px
 
   label    
     margin-left: 10px
+    font-size: 1.2rem
     
 .buttons_container
     display: flex
@@ -159,7 +171,7 @@ form
     content: ''
     display: block
     border-radius: 100%
-    margin: 5px auto
+    margin: 3px auto
     background-color: $main_blue
     width: 15px
     height: 15px
@@ -187,4 +199,38 @@ form
       position: relative      
       left: 80%
       bottom: 5px
-      
+
+
+//end block
+
+.congratulations_block
+  background-color: $main_green
+  color: #fff
+  display: none
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  margin: 0 auto
+  padding: 20px
+
+
+
+  strong
+    font-size: 2em
+
+  
+  .reload_button
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 80%
+    height: 50px
+    background-color: $main_blue
+    cursor: pointer
+    font-size: 1.5em
+    color: #fff
+    transition: 0.2s ease
+  
+  .reload_button:hover
+    font-size: 1.8em
+    color: gold

@@ -1,8 +1,8 @@
-let json = JSON.parse(JSON.stringify(countryes))
+let json = JSON.parse(JSON.stringify(countryes_list))
 
 let option = ''
-json.forEach( (country) => {
-	let name = country.name
+json.forEach( (c) => {
+	let name = c.name
 	option += `<option value="${name}">${name}</option>`
 } )
 
@@ -13,6 +13,9 @@ document.getElementById('country').innerHTML += option;
 let step = 0;
 let step1_inputs = Array.from(document.getElementsByClassName('step')[0].getElementsByClassName('field'));
 let step2_inputs = Array.from(document.getElementsByClassName('step')[1].getElementsByClassName('field'));
+
+let country = document.getElementById('country');
+let sh_country = document.getElementById('sh_country');
 
 
 let prev_buttons = document.getElementsByClassName('prev_button')
@@ -38,19 +41,27 @@ next_buttons[0].addEventListener('click', () => {
 		}
 	})
     
-	for(let i = 0; i < 3; i++){
-		if(step1_inputs[i].value.length && checkIsLetter(step1_inputs[i].value)){
-			console.log(step1_inputs[i].value)
-			step1_inputs[i].classList.add('valideInput');
-			step1_inputs[i].classList.remove('invalideInput');
+	for(let i = 0; i < 2; i++){		
+		if(step1_inputs[i].value.length && !checkIsLetter(step1_inputs[i].value)){			
+			step1_inputs[i].classList.remove('valideInput');
+			step1_inputs[i].classList.add('invalideInput');
 			incorrect++
 		}
 		else if(step1_inputs[i].value.length){
-			step1_inputs[i].classList.remove('valideInput');
-			step1_inputs[i].classList.add('invalideInput');
+			step1_inputs[i].classList.add('valideInput');
+			step1_inputs[i].classList.remove('invalideInput');
 		}
 	}
-
+	[step1_inputs[5], step1_inputs[9]].forEach((c) => {		
+		if(!c.disabled && !c.checkValidity()){
+			incorrect++;			
+			c.parentNode.getElementsByTagName('span')[0].innerText = 'pattern error';
+		}
+		else {
+			c.parentNode.getElementsByTagName('span')[0].innerText = '';
+		}
+	})
+    
 	if(incorrect == 0){		
 		nextStep()
 	}
@@ -67,6 +78,8 @@ shipping_checkbox.addEventListener('change', function(){
 			step1_inputs[i].style.border = '2px solid grey'
 			step1_inputs[i].value = step1_inputs[i-4].value
 		}
+
+		setPostalRegex(country.value, 9)
 	}
 	else{
 		for(let i = 6; i < 10; i++){
@@ -77,7 +90,7 @@ shipping_checkbox.addEventListener('change', function(){
 })
 
 
-for(let i = 0; i < 6; i++){
+for(let i = 3; i < 6; i++){
 	step1_inputs[i].addEventListener('input', () => {
 		if(shipping_checkbox.checked){
 			step1_inputs[i+4].value = step1_inputs[i].value;
@@ -85,7 +98,39 @@ for(let i = 0; i < 6; i++){
 	})
 }
 
+country.onchange = () => {
+	if(shipping_checkbox.checked){
+			sh_country.value = country.value;
+			setPostalRegex(country.value, 9);
+		}
+	setPostalRegex(country.value, 5);	
+}
 
+sh_country.onchange = () => {
+	setPostalRegex(sh_country.value, 9);
+}
+
+
+function setPostalRegex(value, inputIndex){
+	let country_code = '';
+	let postal_reges = false;
+	countryes_list.forEach( (c) => {		
+		if(c.name == value){
+			country_code = c.code;
+			return;
+		}
+	})
+	postal.forEach( (p) => {		
+		if(p.territoryId == country_code){
+			postal_reges = p.text;
+			return;
+		}
+	})
+	if(postal_reges){
+		step1_inputs[inputIndex].setAttribute('pattern', postal_reges);
+		step1_inputs[inputIndex].placeholder = 'postal code' + 'pattern ' + postal_reges;
+	}
+}
 
 
 //for step 2
@@ -106,14 +151,14 @@ next_buttons[1].addEventListener('click', () => {
 	if(step2_inputs[1].value.length < 4 || step2_inputs[1].value != step2_inputs[2].value){
 	    step2_inputs[1].classList.remove('valideInput');
 	    step2_inputs[2].classList.remove('valideInput');
-	    step2_inputs[2].classList.add('invalideInput');
+	    step2_inputs[1].classList.add('invalideInput');
 	    step2_inputs[2].classList.add('invalideInput');
 	    incorrect++
 	}
 	else {
 		step2_inputs[1].classList.add('valideInput');
 	    step2_inputs[2].classList.add('valideInput');
-	    step2_inputs[2].classList.remove('invalideInput');
+	    step2_inputs[1].classList.remove('invalideInput');
 	    step2_inputs[2].classList.remove('invalideInput');
 	}
 
@@ -153,13 +198,13 @@ function checkLogin(login){
 
 // if all inputs are correct go to next step
 function nextStep(){
-	    document.getElementsByClassName('step')[step].style.display = 'none';
+	    document.getElementsByClassName('step')[step].style.display = 'none';	    
 	    step++;
 		if(step < 3){
-			document.getElementsByClassName('step')[step].style.display = 'block'
+			document.getElementsByClassName('step')[step].style.display = 'block';			
 		}
 		else{
-			aler('Done')
+			document.getElementsByClassName('congratulations_block')[0].style.display = 'flex';
 		}
 }
 
@@ -168,7 +213,7 @@ function nextStep(){
 function prevStep(){
 	    document.getElementsByClassName('step')[step].style.display = 'none';
 	    step--;	
-		document.getElementsByClassName('step')[step].style.display = 'block'
+		document.getElementsByClassName('step')[step].style.display = 'block';		
 }
 
 
@@ -249,6 +294,10 @@ next_buttons[2].addEventListener('click', function(){
 		cc_exp_date.classList.add('valideInput');
 		cc_exp_date.classList.remove('invalideInput');
 	}
+
+	if(incorrect == 0){
+		nextStep();
+	}
 })
 
 ccn.addEventListener('keydown', () => {	
@@ -286,6 +335,7 @@ function checkIsNumber(e){
 }
 
 function checkIsLetter(str) {
+  str = str.replace(/\s/g, '');
   return /^[a-zA-Z]+$/.test(str);
 }
 
@@ -331,3 +381,14 @@ function checkExpDate(){
 	isActive = (dateExp > today);	
 	return (isActive);
 }
+
+
+
+
+
+// console.log(postal)
+postal = postal.postalCodeData;
+postal.forEach( (i) => {
+	// console.log(i.territoryId)
+})
+

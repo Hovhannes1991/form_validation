@@ -1,4 +1,4 @@
-let countryes = [
+let countryes_list = [
    {
       "name":"Afghanistan",
       "code":"AF"
@@ -20,7 +20,7 @@ let countryes = [
       "code":"AS"
    },
    {
-      "name":"AndorrA",
+      "name":"Andorra",
       "code":"AD"
    },
    {
