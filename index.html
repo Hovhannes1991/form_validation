@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Willing & Able Internship</title>
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="icon" type="image/png" href="src/favicon.png"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<script type="text/javascript" src="script/countryes.json"></script>
+</head>
+<body>
+	<div class="form_container">
+		<div class="step">
+			<div class="header">
+				<div>
+					<h2>Step 1 / 3</h2>
+			        <p>Tell us who you are</p>
+				</div>
+				<div .icon>
+					<img src="src/step1_icon.png" alt="icon">
+				</div>
+			</div>
+			<form action="#">
+				<p><input type="text" placeholder="First name" class="field"></p>
+				<p><input type="text" placeholder="Last name" class="field"></p>
+				<p>
+					<select name="country" id="country" class="field">
+						<option value="">Choose your country</option>						
+					</select>
+				</p>
+				<p><input type="text" placeholder="City" class="field"></p>				
+				<p><input type="text" placeholder="Adress" class="field"></p>
+				<p><input type="text" placeholder="Postal code" class="field"></p>				
+
+				<p class="checkbox_container">
+					<input type="checkbox" id="shipping_checkbox" name="shipping_checkbox">	
+				    <label for="shipping">Use filed data for shipping</label>
+				</p>
+
+				<p>
+					<select name="shipping_country" id="sh_country" class="field">
+						<option value="">Choose shipping country</option>
+					</select>
+				</p>
+				<p><input type="text" placeholder="Shipping city" class="field" id="sh_city"></p>
+				<p><input type="text" placeholder="Shipping adress" class="field" id="sh_adress"></p>
+				<p><input type="text" placeholder="Shipping Postal code" class="field" id="sh_postal_code"></p>
+
+				<div class="buttons_container">
+					<div class="next_button">
+					  <span>Next</span>
+				    </div>
+				</div>
+			</form>		
+		</div>
+
+		<div class="step">
+			<div class="header">
+				<div>
+					<h2>Step 2 / 3</h2>
+			        <p>Choose a package</p>
+				</div>
+				<div .icon>
+					<img src="src/step2_icon.png" alt="icon">
+				</div>
+			</div>
+			<form action="#">
+				<p><input type="text" placeholder="Email" class="field"></p>
+				<p><input type="password" placeholder="Password" class="field"></p>
+				<p><input type="password" placeholder="Repeat Password" class="field"></p>
+				
+				<div class="radio_buttons">
+					<label for='standart'>
+						<div id="for_standart">							
+							<input type="radio" id="standart" name="package" value="standart">
+						</div>
+					</label>
+					<label for="standart">Standart Package</label>					
+				    
+				    
+				    <label for='premium'>
+				    	<div id="for_premium">				    		
+				    		<input type="radio" id="premium" name="package" value="premium">
+				    	</div>
+				    </label>
+				    <label for="premium">Premium Package</label>
+				</div>
+
+				<div class="buttons_container">
+					<div class="prev_button">
+					  <span>Previous</span>
+				    </div>
+					<div class="next_button">
+					  <span>Next</span>
+				    </div>
+				</div>
+			</form>		
+		</div>
+
+		<div class="step">
+			<div class="header">
+				<div>
+					<h2>Step 3 / 3</h2>
+			        <p>Fill your credit card details</p>
+				</div>
+				<div .icon>
+					<img src="src/step3_icon.png" alt="icon">
+				</div>
+			</div>
+			<form action="#">
+				<p>
+					<i id="cc_icon" class="fa fa-credit-card fa-lg"></i>
+					<input id="credit_card" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
+				</p>
+				<p><input id="cc_full_name" type="text" placeholder="Full name" maxlength="100"></p>
+				<p><input id="cc_cvc" type="tel" maxlength="4" placeholder="CVC"></p>				
+				<p><input id="cc_exp_date" type="date" placeholder="01/01/1900"></p>			
+				
+
+				<div class="buttons_container">
+					<div class="prev_button">
+					  <span>Previous</span>
+				    </div>
+					<div class="next_button">
+					  <span>Next</span>
+				    </div>
+				</div>
+			</form>		
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="script/script.js"></script>
+</body>
+</html>

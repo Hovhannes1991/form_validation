@@ -1,0 +1,190 @@
+$main_blue: #19b9e7
+$flexable_width: 80%
+
+
+html, body, * 
+  box-sizing: border-box
+
+body
+  font: 100%
+  background-color: #fff
+  color: grey
+
+
+.form_container 
+  width: 40%
+  margin: 50px auto
+  border: 10px solid $main_blue
+
+
+.header
+    div
+      p
+        font-size: 20px
+
+@media screen and (max-width: 620px) 
+  .header > div > p
+    font-size: 15px    
+
+form 
+  background-color: #eeeeee
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  p 
+    width: $flexable_width
+
+  input, select
+    width: 100%
+    height: 50px
+    padding-left: 25px
+    color: green
+    border: 2px solid green   
+    font-size: 1.5rem
+  
+  input:focus, select:focus
+    outline: none
+
+  .invalideInput
+    border: 2px solid red
+
+  .valideInput
+    border: 2px solid green
+
+  select
+    color: grey
+    option
+      color: green
+
+@media screen and (max-width: 850px) 
+  form
+    input, select
+      font-size: 1.2rem
+
+
+@media screen and (max-width: 650px) 
+  form
+    input, select
+      font-size: 1rem
+
+.step
+  display: block
+  .header
+      background-color: #fff
+      display: flex
+      justify-content: space-around
+      align-items: center
+
+      img
+        width: 150px
+
+.step:nth-child(3)
+  display: block
+
+@media screen and (max-width: 950px) 
+  .step
+    .header
+      img
+        width: 100px
+
+@media screen and (max-width: 700px) 
+  .step
+    .header
+      img
+        width: 50px
+
+.checkbox_container
+  display: flex
+  align-items: center
+
+  input
+    width: 20px
+    height: 20px
+
+  label    
+    margin-left: 10px
+    
+.buttons_container
+    display: flex
+    width: $flexable_width
+
+.next_button, .prev_button
+    width: 100px
+    height: 40px
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 1.5rem
+    background-color: $main_blue
+    color: #fff
+    margin-bottom: 10px
+    margin-right: 20px
+    cursor: pointer
+
+@media screen and (max-width: 650px) 
+  .prev_button, .next_button
+      width: 70px
+      font-size: 1rem
+
+@media screen and (max-width: 500px) 
+  .buttons_container
+      flex-direction: column
+
+//step2
+
+.radio_buttons
+  display: grid
+  width: $flexable_width
+  align-items: center
+  justify-content: start
+  grid-template-columns: 45px auto
+  grid-template-rows: 40px auto
+  margin-bottom: 20px
+  input
+    display: none
+  div
+    display: flex
+    width: 25px
+    height: 25px
+    border: 2px solid grey
+    border-radius: 100%
+  
+  .selected_radio_button
+    display: block
+    border: 2px solid $main_blue
+    color: red
+
+  .selected_radio_button::after
+    content: ''
+    display: block
+    border-radius: 100%
+    margin: 5px auto
+    background-color: $main_blue
+    width: 15px
+    height: 15px
+  .not_selected
+    border: 2px solid red
+
+
+
+//step 3
+.step:nth-child(3) p:nth-child(1)  
+  position: relative
+
+#cc_icon
+  position: absolute
+  color: blue  
+  left: 90%    
+  top: 25%
+
+@media screen and (max-width: 690px) 
+  #cc_icon
+      left: 80%
+
+@media screen and (max-width: 580px) 
+  #cc_icon
+      position: relative      
+      left: 80%
+      bottom: 5px
+      
