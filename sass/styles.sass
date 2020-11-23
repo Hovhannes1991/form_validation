@@ -3,6 +3,12 @@ $main_green: #2E8B57
 $flexable_width: 80%
 
 
+@mixin flex
+  display: flex
+  justify-content: center
+  align-items: center
+
+
 html, body, * 
   box-sizing: border-box
 
@@ -15,7 +21,7 @@ body
 .form_container 
   width: 800px
   margin: 50px auto
-  border: 10px solid $main_blue
+  border: 10px solid $main_blue  
 
 
 @media screen and (max-width: 800px) 
@@ -32,10 +38,9 @@ body
     font-size: 15px    
 
 form 
-  background-color: #eeeeee
-  display: flex
-  flex-direction: column
-  align-items: center
+  @include flex
+  flex-direction: column  
+  background-color: #eeeeee  
 
   p 
     width: $flexable_width
@@ -79,10 +84,10 @@ form
 .step
   display: none
   .header
+      @include flex
       background-color: #fff
       display: flex
-      justify-content: space-around
-      align-items: center
+      justify-content: space-around    
 
       img
         width: 150px
@@ -106,8 +111,8 @@ form
   color: red
 
 .checkbox_container
-  display: flex
-  align-items: center
+  @include flex
+  justify-content: flex-start
 
   input
     width: 50px
@@ -122,11 +127,9 @@ form
     width: $flexable_width
 
 .next_button, .prev_button
+    @include flex
     width: 100px
-    height: 40px
-    display: flex
-    justify-content: center
-    align-items: center
+    height: 40px    
     font-size: 1.5rem
     background-color: $main_blue
     color: #fff
@@ -185,19 +188,19 @@ form
   position: relative
 
 #cc_icon
-  position: absolute
+  position: relative
   color: blue  
-  left: 90%    
-  top: 25%
+  left: 95%
+  top: 30px
 
 @media screen and (max-width: 690px) 
   #cc_icon
-      left: 80%
+      left: 90%
 
 @media screen and (max-width: 580px) 
   #cc_icon
       position: relative      
-      left: 80%
+      left: 85%
       bottom: 5px
 
 
@@ -220,9 +223,7 @@ form
 
   
   .reload_button
-    display: flex
-    justify-content: center
-    align-items: center
+    @include flex
     width: 80%
     height: 50px
     background-color: $main_blue

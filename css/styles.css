@@ -21,10 +21,11 @@ body {
   .header > div > p {
     font-size: 15px; } }
 form {
-  background-color: #eeeeee;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  align-items: center; }
+  background-color: #eeeeee; }
   form p {
     width: 80%; }
   form input, form select {
@@ -54,10 +55,12 @@ form {
 .step {
   display: none; }
   .step .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #fff;
     display: flex;
-    justify-content: space-around;
-    align-items: center; }
+    justify-content: space-around; }
     .step .header img {
       width: 150px; }
 
@@ -75,7 +78,9 @@ form {
 
 .checkbox_container {
   display: flex;
-  align-items: center; }
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-start; }
   .checkbox_container input {
     width: 50px;
     height: 50px; }
@@ -88,11 +93,11 @@ form {
   width: 80%; }
 
 .next_button, .prev_button {
-  width: 100px;
-  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100px;
+  height: 40px;
   font-size: 1.5rem;
   background-color: #19b9e7;
   color: #fff;
@@ -142,18 +147,18 @@ form {
   position: relative; }
 
 #cc_icon {
-  position: absolute;
+  position: relative;
   color: blue;
-  left: 90%;
-  top: 25%; }
+  left: 95%;
+  top: 30px; }
 
 @media screen and (max-width: 690px) {
   #cc_icon {
-    left: 80%; } }
+    left: 90%; } }
 @media screen and (max-width: 580px) {
   #cc_icon {
     position: relative;
-    left: 80%;
+    left: 85%;
     bottom: 5px; } }
 .congratulations_block {
   background-color: #2E8B57;
