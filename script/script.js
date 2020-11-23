@@ -334,11 +334,20 @@ function checkIsNumber(e){
 	}
 }
 
-function checkIsLetter(str) {
-  str = str.replace(/\s/g, '');
-  return /^[a-zA-Z]+$/.test(str);
-}
+// function checkIsLetter(str) {
+//   str = str.replace(/\s/g, '');
+//   return /^[a-zA-Z]+$/.test(str);
+// }
 
+function checkIsLetter(str){
+  str = str.replace(/\s/g, '');
+  if(/^[a-zA-Z]+$/.test(str) || /[а-яА-ЯЁё]/.test(str) || /[ա-ֆԱ-Ֆ]/.test(str)){
+  	return true;
+  }
+  else{
+  	return false;
+  }
+}
 
 
 function chekFourDigits(){
